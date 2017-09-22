@@ -17,7 +17,9 @@ export class AppComponent {
     let chartData : ChartDataGetterService = this.chartDataGetter;
     //chartData.getChartData();
     this.data = chartData.getChartData();
-    console.log(this.data)
+    for(var d in this.data){
+      console.log(d)
+    }
   }
 
   private data : any;
