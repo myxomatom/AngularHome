@@ -1,11 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { ChartDataGetterService } from './chart-data-getter.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ChartDataGetterService]
 })
 export class AppComponent {
+
+  constructor(
+    private chartDataGetter : ChartDataGetterService) {}
+
+  public ngOnInit() : void {
+    let chartData : ChartDataGetterService = this.chartDataGetter;
+    //chartData.getChartData();
+    this.data = chartData.getChartData();
+    console.log(this.data)
+  }
+
+  private data : any;
+
   title = 'app';
   // lineChart
   public lineChartData:Array<any> = [
@@ -45,7 +61,7 @@ export class AppComponent {
   ];
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
- 
+
   public randomize():void {
     let _lineChartData:Array<any> = new Array(this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {
@@ -56,12 +72,12 @@ export class AppComponent {
     }
     this.lineChartData = _lineChartData;
   }
- 
+
   // events
   public chartClicked(e:any):void {
     console.log(e);
   }
- 
+
   public chartHovered(e:any):void {
     console.log(e);
   }
