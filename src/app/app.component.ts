@@ -11,7 +11,7 @@ import { Coordinate } from './coordinate.class';
 })
 export class AppComponent {
 
-  title = 'app';
+  title = 'MyHome';
   actualCoordinates : Coordinate[] = [{'x':new Date , 'y':0}];
 
   constructor(private chartDataGetter : ChartDataGetterService) {
@@ -20,7 +20,6 @@ export class AppComponent {
   public ngOnInit() : void {
     let chartData : ChartDataGetterService = this.chartDataGetter;
     chartData.getChartData().then(data => this.setChartData(data)).catch(this.handleError);
-    //let res = Promise.resolve(data).then(data => data as Coordinate[]);
   }
 
   private setChartData(coord : Coordinate[]){
@@ -30,14 +29,12 @@ export class AppComponent {
   private handleError(error: any): Promise<any> {
   console.error('Une erreur est survenue!', error); // for demo purposes only
   return Promise.reject(this.actualCoordinates);
-}
-
+  }
 
   // lineChart
-  public lineChartData:Array<any> = [
-    {data: []
-    }
-  ];
+  public lineChartData:Array<any> = [{data: []}];
+
+  public lineChartData2:Array<any> = [{data: []}];
 
   public lineChartOptions:any = {
                     scales: {
