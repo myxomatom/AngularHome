@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ChartDataGetterService } from './chart-data-getter.service'
+import { ChartDataGetterService } from './chart-data-getter.service';
+import { Coordinate } from './coordinate.class';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +11,27 @@ import { ChartDataGetterService } from './chart-data-getter.service'
 })
 export class AppComponent {
 
-  constructor(
-    private chartDataGetter : ChartDataGetterService) {}
+  title = 'app';
+
+  constructor(private chartDataGetter : ChartDataGetterService) {
+    }
 
   public ngOnInit() : void {
     let chartData : ChartDataGetterService = this.chartDataGetter;
-    //chartData.getChartData();
-    this.data = chartData.getChartData();
-    for(var d in this.data){
-      console.log(d)
-    }
+    chartData.getChartData().then(data => this.afficheLog(data)).catch(this.handleError);
+    //let res = Promise.resolve(data).then(data => data as Coordinate[]);
   }
 
-  private data : any;
+  private afficheLog(obj : Coordinate[]){
+    console.log(obj);
+  }
 
-  title = 'app';
+  private handleError(error: any): Promise<any> {
+  console.error('Pas de réponse recu', error); // for demo purposes only
+  return Promise.reject(error.message || error);
+}
+
+
   // lineChart
   public lineChartData:Array<any> = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
