@@ -27,7 +27,7 @@ export class AppComponent {
   }
 
   private handleError(error: any): Promise<any> {
-  console.error('Pas de réponse recu', error); // for demo purposes only
+  console.error('Une erreur est survenue!', error); // for demo purposes only
   return Promise.reject(error.message || error);
 }
 

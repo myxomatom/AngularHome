@@ -30,5 +30,6 @@ export class ChartDataGetterService {
                 'donnee=' + this.donnee + '&' +
                 'type=' + this.type;
     return this.url;
+
   }
 }
