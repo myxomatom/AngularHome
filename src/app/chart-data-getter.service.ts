@@ -7,29 +7,39 @@ import { Coordinate } from './coordinate.class';
 export class ChartDataGetterService {
 
   url : string;
-  rootUrl : string = 'http://home.myxomatom.dev/Ajax/get_data.php?';
-  debut : number = 20170701;
-  fin : number = 20170703;
-  donnee : string = 'Wmin';
-  capteur: number = 3;
-  type : string = 'wattmeter1ch';
+  rootUrl : string = 'http://home.myxomatom.dev/Ajax/';
+  objUrl = {debut : 20170701,
+            fin: 20170703,
+            donnee : 'Wmin',
+            capteur: 3,
+            type : 'wattmeter1ch'
+          }
 
   constructor(private http: Http) { }
 
-  getChartData() : Promise<any> {
-    return this.http.get(this.forgeUri())
+  getChartList() :Promise<any> {
+    return this.http.get(this.forgeUri("get_graph.php?",null))
              .toPromise()
              .then(response => response.json() as Coordinate[]);
   }
 
-  private forgeUri() : string {
-    this.url =  this.rootUrl +
-                'debut=' + this.debut + '&' +
-                'fin=' + this.fin + '&' +
-                'donnee=' + this.donnee + '&' +
-                'capteur=' + this.capteur +'&' +
-                'type=' + this.type;
-    return this.url;
+  getChartData(debut : number, fin : number, donnee : string, capteur : number, type : string) : Promise<any> {
+    let objUrl ={ debut : debut,
+                  fin : fin,
+                  donnee : donnee,
+                  capteur : capteur,
+                  type : type
+                }
+    return this.http.get(this.forgeUri("get_data.php?",this.objUrl))
+             .toPromise()
+             .then(response => response.json() as Coordinate[]);
+  }
 
+  private forgeUri(file,param) : string {
+    this.url = this.rootUrl + file;
+    for (let key in param){
+        this.url += `${key}=${this.objUrl[key]}&`
+    }
+    return this.url
   }
 }

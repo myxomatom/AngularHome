@@ -19,7 +19,7 @@ export class AppComponent {
 
   public ngOnInit() : void {
     let chartData : ChartDataGetterService = this.chartDataGetter;
-    chartData.getChartData().then(data => this.setChartData(data)).catch(this.handleError);
+    chartData.getChartData(20170701,20170703,"Wmin",3,'wattmeter1ch').then(data => this.setChartData(data)).catch(this.handleError);
   }
 
   private setChartData(coord : Coordinate[]){
