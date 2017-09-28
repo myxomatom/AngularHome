@@ -9,17 +9,19 @@ import { Coordinate } from './coordinate.class';
   styleUrls: ['./app.component.css'],
   providers: [ChartDataGetterService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'MyHome';
   actualCoordinates : Coordinate[] = [{'x':new Date , 'y':0}];
 
-  constructor(private chartDataGetter : ChartDataGetterService) {
-    }
+  constructor(private chartDataGetter : ChartDataGetterService) {}
 
   public ngOnInit() : void {
     let chartData : ChartDataGetterService = this.chartDataGetter;
-    chartData.getChartData(20170701,20170703,"Wmin",3,'wattmeter1ch').then(data => this.setChartData(data)).catch(this.handleError);
+    chartData.getChartList()
+          .then(data => console.log(data.capteurs));
+    chartData.getChartData(20170701,20170703,"Wmin",3,'wattmeter1ch')
+          .then(data => this.setChartData(data)).catch(this.handleError);
   }
 
   private setChartData(coord : Coordinate[]){
