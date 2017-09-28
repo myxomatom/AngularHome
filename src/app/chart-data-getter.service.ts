@@ -23,13 +23,11 @@ export class ChartDataGetterService {
              .then(response => response.json() as Coordinate[]);
   }
 
-  getChartData(debut : number, fin : number, donnee : string, capteur : number, type : string) : Promise<any> {
-    let objUrl ={ debut : debut,
-                  fin : fin,
-                  donnee : donnee,
-                  capteur : capteur,
-                  type : type
-                }
+  getChartData( debut : number, fin : number,
+                donnee : string, capteur : number, type : string) : Promise<any> {
+    let objUrl ={ debut : debut, fin : fin,
+                  donnee : donnee, capteur : capteur, type : type }
+
     return this.http.get(this.forgeUri("get_data.php?",this.objUrl))
              .toPromise()
              .then(response => response.json() as Coordinate[]);
