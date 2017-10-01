@@ -8,12 +8,8 @@ export class ChartDataGetterService {
 
   url : string;
   rootUrl : string = 'http://home.myxomatom.dev/Ajax/';
-  objUrl = {debut : 20170701,
-            fin: 20170703,
-            donnee : 'Wmin',
-            capteur: 3,
-            type : 'wattmeter1ch'
-          }
+  objUrl : {debut : number, fin: number,
+            donnee : string, capteur: number, type : string}
 
   constructor(private http: Http) { }
 
@@ -25,9 +21,8 @@ export class ChartDataGetterService {
 
   getChartData( debut : number, fin : number,
                 donnee : string, capteur : number, type : string) : Promise<any> {
-    let objUrl ={ debut : debut, fin : fin,
+    this.objUrl ={ debut : debut, fin : fin,
                   donnee : donnee, capteur : capteur, type : type }
-
     return this.http.get(this.forgeUri("get_data.php?",this.objUrl))
              .toPromise()
              .then(response => response.json() as Coordinate[]);

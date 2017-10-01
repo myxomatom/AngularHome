@@ -19,21 +19,24 @@ export class AppComponent implements OnInit {
   public ngOnInit() : void {
     let chartData : ChartDataGetterService = this.chartDataGetter;
     chartData.getChartList()
-          .then(data => console.log(data.capteurs));
-    chartData.getChartData(20170701,20170703,"Wmin",3,'wattmeter1ch')
-          .then(data => this.setChartData(data)).catch(this.handleError);
+          .then(data => this.populateChartList(data.capteurs));
   }
 
   private setChartData(coord : Coordinate[]){
+    if (coord.length > 0){
+      let coordonnees = [{'data' : coord}];
+      this.lineChartData.push(coordonnees);
+    }
+  }
 
-    let coordonnees = [{'data' : coord}];
-    this.lineChartData.push(coordonnees);
-    this.lineChartData.push(coordonnees);
-    this.lineChartData[0] = coordonnees;
-    this.lineChartData[1] = coordonnees;
-    //this.lineChartData[2] = [[{x: "2017-07-01 01:21:34", y: "172.75"},{x: "2017-07-01 03:21:34", y: "172.75"},{x: "2017-07-01 05:21:34", y: "172.75"}]];
-
-      console.log(this.lineChartData);
+  private populateChartList(sensors:any){
+    for (let sensor of sensors) {
+      let mesures = sensor[2][0].split(" ");
+      for (let mesure of mesures){
+        this.chartDataGetter.getChartData(20170701,20170703,mesure,sensor[0],sensor[1])
+              .then(data => this.setChartData(data)).catch(this.handleError);
+      }
+    }
   }
 
   private handleError(error: any): Promise<any> {
@@ -42,9 +45,9 @@ export class AppComponent implements OnInit {
   }
 
   // lineChart
-  public lineChartData:Array<any> = [[{data: []}],[{data : []}]];
+  public chartList:Array<any> = [];
 
-  public lineChartData2:Array<any> = [{data: []}];
+  public lineChartData:Array<any> =[];
 
   public lineChartOptions:any = {
                     scales: {
