@@ -7,24 +7,12 @@
   </div>
 
 
-    <div class="row">
-      <div class="col-sm-6">
-        <div style="display: block;">
-        <canvas baseChart width="400" height="400"
-                    [datasets]="lineChartData"
-                    [labels]="lineChartLabels"
-                    [options]="lineChartOptions"
-                    [colors]="lineChartColors"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-        </div>
-      </div>
+    <ul>
+      <li *ngFor="let graph of lineChartData; index as i"><div class="row">
         <div class="col-sm-6">
           <div style="display: block;">
           <canvas baseChart width="400" height="400"
-                      [datasets]="lineChartData2"
+                      [datasets]="lineChartData[i]"
                       [labels]="lineChartLabels"
                       [options]="lineChartOptions"
                       [colors]="lineChartColors"
@@ -34,5 +22,6 @@
                       (chartClick)="chartClicked($event)"></canvas>
           </div>
         </div>
-      </div>
-    </div>
+      </div></li>
+    </ul>
+  </div>

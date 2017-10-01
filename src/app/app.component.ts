@@ -25,7 +25,15 @@ export class AppComponent implements OnInit {
   }
 
   private setChartData(coord : Coordinate[]){
-    this.lineChartData = coord;
+
+    let coordonnees = [{'data' : coord}];
+    this.lineChartData.push(coordonnees);
+    this.lineChartData.push(coordonnees);
+    this.lineChartData[0] = coordonnees;
+    this.lineChartData[1] = coordonnees;
+    //this.lineChartData[2] = [[{x: "2017-07-01 01:21:34", y: "172.75"},{x: "2017-07-01 03:21:34", y: "172.75"},{x: "2017-07-01 05:21:34", y: "172.75"}]];
+
+      console.log(this.lineChartData);
   }
 
   private handleError(error: any): Promise<any> {
@@ -34,7 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   // lineChart
-  public lineChartData:Array<any> = [{data: []}];
+  public lineChartData:Array<any> = [[{data: []}],[{data : []}]];
 
   public lineChartData2:Array<any> = [{data: []}];
 
