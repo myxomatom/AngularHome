@@ -1,7 +1,7 @@
 <div class="grid-x grid-margin-x">
   <div class="medium-6 large-4 cell" *ngFor="let graph of lineChartData; index as i">
     <div class="grid-x grid-margin-x">
-      <div class="small-12 cell">
+      <div class="cell">
         <canvas baseChart width="200" height="200"
                   [datasets]="lineChartData[i]"
                   [labels]="lineChartLabels"
@@ -13,7 +13,7 @@
                   (chartClick)="chartClicked($event)">
         </canvas>
       </div>
-      <div class="small-12 cell">
+      <div class="cell">
         <datepicker-overview></datepicker-overview>
       </div>
     </div>
