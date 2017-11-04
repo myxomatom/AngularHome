@@ -1,5 +1,16 @@
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Déb">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+<div class="grid-x grid-margin-x">
+  <div class="small-6 cell">
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerDeb" placeholder="Début">
+        <mat-datepicker-toggle matSuffix [for]="pickerDeb"></mat-datepicker-toggle>
+        <mat-datepicker #pickerDeb></mat-datepicker>
+      </mat-form-field>
+  </div>
+  <div class="small-6 cell">
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerFin" placeholder="Fin">
+      <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>

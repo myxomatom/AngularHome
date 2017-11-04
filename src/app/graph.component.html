@@ -1,8 +1,8 @@
-  <div class="grid-x grid-margin-x">
-   <div class="medium-6 large-4 cell" *ngFor="let graph of lineChartData; index as i">
-     <div class="grid-x grid-margin-x">
-       <div class="small-12 cell">
-      <canvas baseChart width="200" height="200"
+<div class="grid-x grid-margin-x">
+  <div class="medium-6 large-4 cell" *ngFor="let graph of lineChartData; index as i">
+    <div class="grid-x grid-margin-x">
+      <div class="small-12 cell">
+        <canvas baseChart width="200" height="200"
                   [datasets]="lineChartData[i]"
                   [labels]="lineChartLabels"
                   [options]="lineChartOptions"
@@ -11,14 +11,11 @@
                   [chartType]="lineChartType"
                   (chartHover)="chartHovered($event)"
                   (chartClick)="chartClicked($event)">
-      </canvas>
-    </div>
-      <div class="datepicker small-6 cell">
+        </canvas>
+      </div>
+      <div class="small-12 cell">
         <datepicker-overview></datepicker-overview>
       </div>
-      <div class="datepicker small-6 cell">
-        <datepicker-overview></datepicker-overview>
-      </div>
-      </div>
     </div>
-    </div>
+  </div>
+</div>
