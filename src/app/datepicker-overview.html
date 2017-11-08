@@ -1,14 +1,14 @@
 <div class="grid-x grid-margin-x">
   <div class="small-6 cell">
       <mat-form-field>
-        <input matInput [matDatepicker]="pickerDeb" placeholder="Début">
+        <input matInput [matDatepicker]="pickerDeb" placeholder="Début" (dateInput)="onInput($event)">
         <mat-datepicker-toggle matSuffix [for]="pickerDeb"></mat-datepicker-toggle>
         <mat-datepicker #pickerDeb></mat-datepicker>
       </mat-form-field>
   </div>
   <div class="small-6 cell">
     <mat-form-field>
-      <input matInput [matDatepicker]="pickerFin" placeholder="Fin">
+      <input matInput [matDatepicker]="pickerFin" placeholder="Fin" (dateInput)="onInput($event)">
       <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
       <mat-datepicker #pickerFin></mat-datepicker>
     </mat-form-field>

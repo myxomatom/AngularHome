@@ -89,4 +89,9 @@ export class GraphComponent implements OnInit {
   public chartHovered(e:any):void {
     console.log(e);
   }
+
+  public dateUpdated(data:any) {
+    console.log(data);
+   console.log("ID du graphique : " + data.graphID + " date: " + data.value)
+ }
 }
