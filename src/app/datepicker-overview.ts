@@ -1,32 +1,24 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'datepicker-overview',
   templateUrl: 'datepicker-overview.html',
   styleUrls: ['datepicker-overview.css'],
 })
-export class DatepickerOverview implements OnInit {
+export class DatepickerOverview {
 
+  private dateDeb : Date;
+  private dateFin : Date;
   private _graphID : number;
-  @Output() sendDateDeb = new EventEmitter();
+
+  @Output() sendDate = new EventEmitter();
   @Input()
     set graphID(ID : number) {
       this._graphID = ID;
     }
-  dateDeb : Date;
-  dateFin : Date;
-
-
-
-  ngOnInit(){
-    //this.dateDeb = new Date();
-    //this.dateFin = new Date();
-  }
 
   public onInput(data:any){
     data.graphID = this._graphID;
-
     let IDinput = Number(data.targetElement.id.substr(10));
     if (IDinput%2){
       this.dateFin = data.value;
@@ -38,6 +30,13 @@ export class DatepickerOverview implements OnInit {
       data.debut = data.value;
       data.fin = this.dateFin;
     }
-    this.sendDateDeb.emit(data);
+
+    if ( typeof this.dateDeb === 'undefined' || isNaN(this.dateDeb.getDate()) ||
+         typeof this.dateFin === 'undefined' || isNaN(this.dateFin.getDate()) ) {
+      console.log("Début : " + this.dateDeb + " --- Fin : " + this.dateFin);
+    }
+    else {
+      this.sendDate.emit(data);
+    }
   }
 }
