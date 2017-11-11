@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpModule }    from '@angular/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -19,7 +19,7 @@ import { ChartsModule } from 'ng2-charts';
   ],
   exports:[GraphLayoutComponent],
   imports: [
-    BrowserModule,
+    CommonModule,
     ChartsModule,
     FormsModule,
     HttpModule,
