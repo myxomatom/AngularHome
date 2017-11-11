@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ChartDataGetterService } from './chart-data-getter.service';
+import { ChartDataGetterService } from '../chart-data-getter.service/chart-data-getter.service';
 import { Coordinate } from './coordinate.class';
 
 @Component({
   selector: 'graph',
   templateUrl: './graph.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./graph.component.css'],
   providers: [ChartDataGetterService]
 })
 

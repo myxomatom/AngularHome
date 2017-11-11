@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Coordinate } from './coordinate.class';
+import { Coordinate } from '../graph.component/coordinate.class';
 
 @Injectable()
 export class ChartDataGetterService {
