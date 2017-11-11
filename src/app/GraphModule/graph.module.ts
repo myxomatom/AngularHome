@@ -8,14 +8,14 @@ import { MatDatepickerModule,
          MatNativeDateModule,
        } from '@angular/material';
 
-import { GraphLayoutComponent } from './graph.component';
+import { GraphLayoutComponent } from './graph-layout.component';
 import { GraphComponent } from './graph.component/graph.component';
-import { DatepickerOverview } from './datepicker.component/datepicker-overview';
+import { DatepickerComponent } from './datepicker.component/datepicker.component';
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
-    GraphLayoutComponent,GraphComponent,DatepickerOverview,GraphLayoutComponent
+    GraphLayoutComponent,GraphComponent,DatepickerComponent,GraphLayoutComponent
   ],
   exports:[GraphLayoutComponent],
   imports: [

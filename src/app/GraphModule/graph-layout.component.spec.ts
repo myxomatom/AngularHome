@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 
-import { GraphLayoutComponent } from './graph.component';
+import { GraphLayoutComponent } from './graph-layout.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

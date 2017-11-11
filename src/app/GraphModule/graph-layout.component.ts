@@ -5,7 +5,7 @@ import { Coordinate } from './graph.component/coordinate.class';
 
 @Component({
   selector: 'graph-layout',
-  templateUrl: './graph.component.html',
+  templateUrl: './graph-layout.component.html',
   providers: [ChartDataGetterService]
 })
 export class GraphLayoutComponent {

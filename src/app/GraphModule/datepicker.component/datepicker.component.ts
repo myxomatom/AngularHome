@@ -1,11 +1,11 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
-  selector: 'datepicker-overview',
-  templateUrl: 'datepicker-overview.html',
-  styleUrls: ['datepicker-overview.css'],
+  selector: 'datepicker',
+  templateUrl: 'datepicker.component.html',
+  styleUrls: ['datepicker.component.css'],
 })
-export class DatepickerOverview {
+export class DatepickerComponent {
 
   private dateDeb : Date;
   private dateFin : Date;
