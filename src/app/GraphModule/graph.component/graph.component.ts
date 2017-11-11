@@ -6,7 +6,6 @@ import { Coordinate } from './coordinate.class';
 @Component({
   selector: 'graph',
   templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.css'],
   providers: [ChartDataGetterService]
 })
 
