@@ -1,2 +1,13 @@
 <h3>{{title}}</h3>
-<graph></graph>
+<div class="grid-x grid-margin-x">
+  <div class="medium-6 large-4 cell" *ngFor="let graph of lineChartData; index as i">
+    <div class="grid-x grid-margin-x">
+      <div class="cell">
+        <graph [graphData]="lineChartData" [graphID]=i></graph>
+      </div>
+      <div class="cell">
+        <datepicker [graphID]=i (sendDate)="dateUpdated($event)"></datepicker>
+      </div>
+    </div>
+  </div>
+</div>
